@@ -3,31 +3,31 @@ import java.util.Scanner;
 public class StudentGradeCalculator {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner inputScanner = new Scanner(System.in);
 
         // Number of subjects
-        int numSubjects = 5;
+        int numberOfSubjects = 5;
 
         // Array to store marks for each subject
-        int[] marks = new int[numSubjects];
+        int[] subjectMarks = new int[numberOfSubjects];
 
         // Input marks for each subject
-        for (int i = 0; i < numSubjects; i++) {
+        for (int i = 0; i < numberOfSubjects; i++) {
             System.out.print("Enter marks for Subject " + (i + 1) + ": ");
-            marks[i] = scanner.nextInt();
+            subjectMarks[i] = inputScanner.nextInt();
 
             // Validate marks (between 0 and 100)
-            if (marks[i] < 0 || marks[i] > 100) {
+            if (subjectMarks[i] < 0 || subjectMarks[i] > 100) {
                 System.out.println("Please enter valid marks between 0 and 100.");
                 return;
             }
         }
 
         // Calculate total marks
-        int totalMarks = calculateTotalMarks(marks);
+        int totalMarks = calculateTotalMarks(subjectMarks);
 
         // Calculate average marks
-        double averagePercentage = calculateAveragePercentage(totalMarks, numSubjects);
+        double averagePercentage = calculateAveragePercentage(totalMarks, numberOfSubjects);
 
         // Calculate grade
         char grade = calculateGrade(averagePercentage);
@@ -36,20 +36,22 @@ public class StudentGradeCalculator {
         System.out.println("Total Marks: " + totalMarks);
         System.out.println("Average Percentage: " + averagePercentage);
         System.out.println("Grade: " + grade);
+        
+        inputScanner.close();
     }
 
-    public static int calculateTotalMarks(int[] marks) {
+    public static int calculateTotalMarks(int[] subjectMarks) {
         int total = 0;
 
-        for (int mark : marks) {
+        for (int mark : subjectMarks) {
             total += mark;
         }
 
         return total;
     }
 
-    public static double calculateAveragePercentage(int totalMarks, int numSubjects) {
-        return (double) totalMarks / numSubjects;
+    public static double calculateAveragePercentage(int totalMarks, int numberOfSubjects) {
+        return (double) totalMarks / numberOfSubjects;
     }
 
     public static char calculateGrade(double averagePercentage) {
@@ -66,3 +68,4 @@ public class StudentGradeCalculator {
         }
     }
 }
+
